@@ -47,5 +47,6 @@ Auth::routes();
 //Pages
 Route::get('/home', 'HomeController@index');
 Route::get('/search', 'SearchController@index');
+Route::get('/estate/{id}', 'EstateController@index');
 Route::get('/rent', 'newEstateController@index');
 

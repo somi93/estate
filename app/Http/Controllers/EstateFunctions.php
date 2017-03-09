@@ -108,7 +108,12 @@ class EstateFunctions extends Controller
             });
             $data = $data->get();
         } else {
-            $data = Estate::with('street')->find($id);
+             $data = DB::table('estate AS e')
+                ->join('street AS s', 'e.street_id', '=', 's.id')
+                ->join('area AS a', 's.area_id', '=', 'a.id')
+                ->join('city AS c', 'a.city_id', '=', 'c.id')
+                ->where('e.id', '=', $id)
+                ->select('e.*', 's.name AS street', 'a.name AS areaname', 'c.name AS city')->get();
         }
         json_decode($data);
         return $data;

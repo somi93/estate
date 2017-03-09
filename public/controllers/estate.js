@@ -1,5 +1,14 @@
 app.controller('estate', function ($http, $scope, BASE_URL) {
 
+    var type = document.getElementById('page').value;
+    if(type == 'estate'){
+        var id = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+        $http.get(BASE_URL + 'api/estate?id='+id)
+            .success(function (response) {
+                $scope.singleEstate = response[0];
+            })
+    }
+
     //Fetch estates
     $http.get(BASE_URL + 'api/estate')
         .success(function (response) {

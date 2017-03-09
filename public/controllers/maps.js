@@ -1,4 +1,5 @@
 app.controller('map', function ($scope, $http, BASE_URL) {
+
     var map;
     var markers = [];
     var markerCluster;
@@ -14,14 +15,14 @@ app.controller('map', function ($scope, $http, BASE_URL) {
             center: {lat: 44.807, lng: 20.444},
             zoom: 8
         });
-
         $http.get(BASE_URL + 'api/estate')
             .success(function (response) {
                 for(var i = 0; i<response.length; i++){
+                    var link = "estate/"+response[i].id;
                     var content =
                         '<div class="info-box">'+
                         '<div class="info-title">' +
-                        '<a href="#">' +
+                        '<a href="'+link+'">' +
                         response[i].title+ ', '+response[i].street+', ' + response[i].price + '&euro;' +
                         '</a>' +
                         '</div>' +
