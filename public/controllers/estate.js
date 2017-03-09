@@ -54,7 +54,7 @@ app.controller('estate', function ($http, $scope, BASE_URL) {
             params: Indata,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function (response) {
-            console.log(response);
+
         })
     }
     $scope.initialize = function() {
@@ -64,9 +64,39 @@ app.controller('estate', function ($http, $scope, BASE_URL) {
         });
         var numberofMarkers = 0;
         var marker;
+        var number;
+        document.getElementById('insert_city').addEventListener('click', function () {
+            $http.get(BASE_URL+'api/city/streets/2')
+                .success(function (response) {
+                    var i = 0;
+                    response.forEach(function(obj) {
+                        $http.get(BASE_URL + 'api/street/estates/'+obj.id)
+                            .success(function (estates) {
+                                var numberofestates = estates.length;
+                                if(numberofestates == 0) {
+                                     number = Math.floor(Math.random() * 40) + 1;
+                                     var address = obj.city+", "+obj.name+" "+number;
+                                     var geocoder = new google.maps.Geocoder();
+                                     geocoder.geocode({'address': address}, function(results, status) {
+                                         $scope.latitude = results[0].geometry.location.lat();
+                                         $scope.longitude = results[0].geometry.location.lng();
+                                         $scope.newEstate.street_id = obj.id;
+                                         var Indata = {'estate': $scope.newEstate, 'lat': $scope.latitude, 'lng': $scope.longitude };
+                                         $http({
+                                             url: BASE_URL+'api/estate/insert',
+                                             method: 'POST',
+                                             params: Indata,
+                                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                         }).success(function (response) {
 
-        var geocoder = new google.maps.Geocoder();
-        document.getElementById('nmbr').addEventListener('change', function() {
+                                         })
+                                     })
+                                }
+                            });
+                    });
+                });
+        })
+        /*document.getElementById('nmbr').addEventListener('change', function() {
             var number = document.getElementById('nmbr').value;
             var address = $scope.cityName+", "+$scope.streetName+" "+number;
             geocoder.geocode({'address': address}, function(results, status) {
@@ -87,7 +117,7 @@ app.controller('estate', function ($http, $scope, BASE_URL) {
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
             });
-        });
+        });*/
     }
     google.maps.event.addDomListener(window, 'load', $scope.initialize);
 })

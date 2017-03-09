@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Estate;
 use Illuminate\Http\Request;
 use DB;
 use App\Street;
@@ -38,5 +39,10 @@ class StreetFunctions extends Controller
         $area = Street::find($id);
         $area->delete();
         return 'Success';
+    }
+    public function estates($id) {
+        $data = Estate::where('street_id', $id)->get();
+        $data = json_decode($data);
+        return $data;
     }
 }

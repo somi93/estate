@@ -26,7 +26,7 @@ app.controller('area', function ($http, $scope, BASE_URL) {
             data: $.param($scope.newArea),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function () {
-            window.location.reload();
+            // window.location.reload();
         })
     }
 

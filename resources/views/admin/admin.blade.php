@@ -120,7 +120,7 @@
                     <th>City</th>
                     <th>Update/Delete</th>
                 </tr>
-                <tr ng-repeat="area in areas">
+                <tr ng-repeat="area in areas | limitTo:10">
                     <td>@{{ area.name  }}</td>
                     <td>@{{ area.city.name  }}</td>
                     <td>
@@ -181,7 +181,7 @@
                     <th>Area</th>
                     <th>Update/Delete</th>
                 </tr>
-                <tr ng-repeat="street in streets">
+                <tr ng-repeat="street in streets | limitTo:10">
                     <td>@{{ street.name  }}</td>
                     <td>@{{ street.area.name  }}</td>
                     <td>
@@ -194,6 +194,7 @@
                 </tr>
             </table>
             <br/>
+
             <table class="hidden update-table">
                 <tr>
                     <th>Name</th>
@@ -223,6 +224,7 @@
                 </tr>
             </table>
             <br/>
+
             <table class="hidden insert-table">
                 <tr>
                     <th>Name</th>
@@ -235,14 +237,15 @@
                     <td>
                         <select
                                 ng-model="city.id"
-                                ng-options="city.id as city.name for city in cities"
+                                ng-options="city.id as city.name for city in cities | orderBy:'name'"
                                 ng-change="cityAreas(city.id)">
                             <option>--</option>
                         </select>
                     </td>
                     <td>
-                        <select ng-model="newStreet.area">
-                            <option ng-repeat="cityarea in cityareas" value="@{{ cityarea.id }}">@{{ cityarea.name }}</option>
+                        <select ng-model="newStreet.area"
+                                ng-options="cityarea.id as cityarea.name for cityarea in cityareas | orderBy:'name'">
+                                <option>--</option>
                         </select>
                     </td>
                     <td>

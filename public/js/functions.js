@@ -6,4 +6,7 @@ $(document).ready(function () {
         $('.admin-tables').addClass('hidden');
         $('#admin-table-'+table).removeClass('hidden');
     });
+    $('.btn-ddl').click(function () {
+        $(this).next().toggleClass('hidden');
+    })
 })

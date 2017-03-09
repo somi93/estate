@@ -90,9 +90,23 @@
                     </td>
                 </tr>
                 <tr>
+                    <td><label>Furnishment</label></td>
+                    <td>
+                        <label>Furnished</label>
+                        <input type="radio" value="3" ng-model="newEstate.furnishment"/>
+                        <label>Half Furnished</label>
+                        <input type="radio" value="2" ng-model="newEstate.furnishment"/>
+                        <label>Unfurnished</label>
+                        <input type="radio" value="1" ng-model="newEstate.furnishment"/>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <button class="button" ng-click="insertEstate()">Insert</button>
                     </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><button id="insert_city">Insert Entire City</button></td>
                 </tr>
             </table>
         </div>

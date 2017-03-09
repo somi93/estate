@@ -13,6 +13,7 @@ Route::get('/api/city/{id}', 'CityFunctions@cities');
 Route::post('/api/city/update/{id}', 'CityFunctions@update');
 Route::post('/api/city/insert', 'CityFunctions@insert');
 Route::get('/api/city/areas/{id}', 'CityFunctions@areas');
+Route::get('/api/city/streets/{id}', 'CityFunctions@streets');
 
 
 //Areas
@@ -27,6 +28,7 @@ Route::get('/api/street', 'StreetFunctions@streets');
 Route::post('/api/street/insert', 'StreetFunctions@insert');
 Route::post('/api/street/update/{id}', 'StreetFunctions@update');
 Route::delete('/api/street/{id}', 'StreetFunctions@delete');
+Route::get('/api/street/estates/{id}', 'StreetFunctions@estates');
 
 //Estate Type
 Route::get('/api/estate_type', 'Estate_Type_Functions@estate_type');

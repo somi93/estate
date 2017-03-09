@@ -50,4 +50,13 @@ class CityFunctions extends Controller
         $data = Area::where('city_id', $id)->get();
         return $data;
     }
+    public function streets($id) {
+        $data = DB::table('city AS c')
+        ->join('area AS a', 'a.city_id', '=', 'c.id')
+        ->join('street AS s', 's.area_id', '=', 'a.id')
+        ->where('c.id', '=', $id)
+        ->select('s.*', 'a.name AS area', 'c.name AS city')->get();
+        $data = json_decode($data);
+        return $data;
+    }
 }

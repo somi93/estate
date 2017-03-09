@@ -19,8 +19,12 @@ class CreateEstateTable extends Migration
             $table->text('description');
             $table->integer('street_id')->unsigned();
             $table->foreign('street_id')->references('id')->on('street');
+            $table->integer('furnishment_id')->unsigned();
+            $table->foreign('furnishment_id')->references('id')->on('furnishment');
             $table->integer('price');
             $table->integer('area');
+            $table->integer('latitude');
+            $table->integer('longitude');
             $table->smallInteger('elevator');
             $table->smallInteger('internet');
             $table->smallInteger('intercom');

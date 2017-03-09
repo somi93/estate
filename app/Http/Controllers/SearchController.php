@@ -24,8 +24,6 @@ class SearchController extends Controller
      */
     public function index()
     {
-        return view('pages/estate', array(
-            'username' => '123'
-        ));
+        return view('pages/search');
     }
 }

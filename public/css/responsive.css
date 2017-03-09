@@ -23,6 +23,9 @@
 
 
 
+*{
+    box-sizing: border-box;
+}
 
 
 
@@ -236,6 +239,126 @@ header nav .login_btn:hover{
     float: left;
 }
 
+.filters-box{
+    width: 100%;
+    height: 75px;
+    border-top: 1px solid#333;
+    box-shadow: 2px 0 3px #777777;
+    z-index: 100;
+    margin-bottom: 2px;
+}
+
+.filters{
+    padding: 15px 0 10px 0;
+    margin-left: 1%;
+    float: left;
+    width: 98%;
+}
+
+.filters *{
+    float: left;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.filters > div{
+    margin: 0 10px;
+}
+
+.filters label{
+    font: 12px Helvetica;
+    font-weight: bold;
+    color: #454545;
+}
+
+.filters input[type=number]{
+    margin-right: 5px;
+    width:75px;
+}
+
+.submit-box, .facilities-box, .heating-box{
+    vertical-align: middle;
+    padding-top: 13px;
+    position: relative;
+}
+
+.submit-box {
+    float: right;
+}
+
+.dropdown-menu {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 50px;
+    z-index: 500;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dropdown-menu li:first-child{
+    border-radius: 4px 4px 0px 0px;
+}
+
+.dropdown-menu li:last-child{
+    border-radius: 0px 0px 4px 4px;
+    border-bottom: 0px;
+}
+
+.dropdown-menu li{
+    list-style: none;
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    background: #f4f4f4;
+    border-bottom: 1px solid#ccc;
+}
+
+.dropdown-menu label{
+    line-height: 1.6;
+}
+
+.dropdown-menu li:nth-child(2n+1){
+    background: #fff;
+}
+
+.dropdown-menu a{
+    color: #333;
+}
+
+.btn{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-search{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.btn-search:hover{
+    border: 1px solid#999;
+    background: #dedede;
+}
+
 #map a{
     text-decoration: none;
 }
@@ -246,7 +369,7 @@ header nav .login_btn:hover{
 }
 
 .info-title{
-    width: 360px;
+    width: 370px;
     color: #fff;
     background: #2a88bd;
     padding: 5px 10px;
